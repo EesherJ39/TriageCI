@@ -1,0 +1,8 @@
+.triageci/
+coverage/
+node_modules/
+*.db
+*.db-shm
+*.db-wal
+benchmark-results.json
+.env

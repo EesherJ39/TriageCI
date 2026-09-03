@@ -1,0 +1,16 @@
+{
+  "name": "triageci",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node src/server.ts",
+    "test": "node --test --experimental-test-coverage \"test/*.test.ts\"",
+    "test:junit": "python -m unittest test/junit_adapter_test.py",
+    "demo:seed": "node scripts/seed-demo.mjs",
+    "stress": "node scripts/stress.mjs"
+  }
+}

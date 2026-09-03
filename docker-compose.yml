@@ -1,0 +1,21 @@
+services:
+  triageci:
+    build: .
+    read_only: true
+    ports:
+      - "8080:8080"
+    environment:
+      TRIAGECI_TOKEN: ${TRIAGECI_TOKEN:-local-development-token}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_WEBHOOK_SECRET:-local-webhook-secret}
+    volumes:
+      - triageci-data:/data
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+volumes:
+  triageci-data:

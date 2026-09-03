@@ -1,0 +1,41 @@
+openapi: 3.1.0
+info:
+  title: TriageCI API
+  version: 1.0.0
+paths:
+  /api/v1/runs:
+    post:
+      summary: Queue a normalized CI test report
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, maxLength: 200 }
+      security: [{ ApiToken: [] }]
+      responses:
+        "202": { description: Queued }
+        "409": { description: Idempotency key conflict }
+        "413": { description: Payload too large }
+        "429": { description: Queue saturated or rate limited }
+  /api/v1/summary:
+    get:
+      summary: Repository health summary and failure clusters
+      parameters:
+        - in: query
+          name: repository
+          required: true
+          schema: { type: string, pattern: "^[^/]+/[^/]+$" }
+      responses:
+        "200": { description: Summary }
+  /api/v1/github/webhook:
+    post:
+      summary: Receive a signed GitHub webhook
+      responses:
+        "202": { description: Accepted }
+        "401": { description: Invalid HMAC signature }
+components:
+  securitySchemes:
+    ApiToken:
+      type: apiKey
+      in: header
+      name: X-TriageCI-Token
