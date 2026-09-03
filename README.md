@@ -1,5 +1,7 @@
 # TriageCI
 
+[![CI](https://github.com/EesherJ39/TriageCI/actions/workflows/ci.yml/badge.svg)](https://github.com/EesherJ39/TriageCI/actions/workflows/ci.yml)
+
 TriageCI is a self-hosted CI failure-intelligence service. It ingests language-agnostic test results, builds an audit trail for every test, separates consistently failing regressions from nondeterministic failures, and clusters repeated stack traces into actionable incidents.
 
 It is a real GitHub Actions integration rather than a synthetic dashboard: CI can upload normalized JSON directly or convert JUnit XML with the included adapter. The service acknowledges authenticated reports quickly, processes them through a bounded background queue, and exposes repository health through a REST API, a live dashboard, and Prometheus metrics.
