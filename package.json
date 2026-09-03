@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node src/server.ts",
     "test": "node --test --experimental-test-coverage \"test/*.test.ts\"",
-    "test:junit": "python -m unittest test/junit_adapter_test.py",
+    "test:junit": "python -m unittest discover -s test -p junit_adapter_test.py",
     "demo:seed": "node scripts/seed-demo.mjs",
     "stress": "node scripts/stress.mjs"
   }
